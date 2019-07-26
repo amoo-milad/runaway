@@ -1,0 +1,15 @@
+django.mo
+
+*.sqlite3
+__pycache__
+*.py[oc]
+
+.idea
+.vscode
+.cache
+
+*.so
+*.o
+*.orig
+*~
+
