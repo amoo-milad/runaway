@@ -2,7 +2,7 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'detail' question.id %}"> {{ question.question_text }}</a></li>
+        <li><a href="{% url 'critic:detail' question.id %}"> {{ question.question_text }}</a></li>
 
     {% endfor %}
     </ul>
@@ -11,6 +11,6 @@
     <li>
         <a href="/critic/{{ question.id }}/">{{ question.question_text }}</a>
 
-        <a href="{% url 'detail' question.id %}"> {{ question.question_text }}</a>
+        <a href="{% url 'critic:detail' question.id %}"> {{ question.question_text }}</a>
     </li>
 {% endif %}
