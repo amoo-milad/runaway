@@ -14,7 +14,5 @@
     <p>No polls are available.</p>
     <li>
         <a href="/critic/{{ question.id }}/">{{ question.question_text }}</a>
-
-        <a href="{% url 'critic:detail' question.id %}"> {{ question.question_text }}</a>
     </li>
 {% endif %}
