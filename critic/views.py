@@ -10,7 +10,7 @@ def index(request):
         'latest_question_list': latest_question_list,
     }
 
-    context = {}
+    # context = {}
     
     return render(request, 'critic/index.html', context)
 
