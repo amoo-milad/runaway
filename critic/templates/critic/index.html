@@ -3,11 +3,27 @@
 <link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}">
 
 <h1>Hi Critics!</h1>
+
+
+{% if latest_review_list %}
+    <ul>
+    <h4>Reviews:</h4>
+    {% for review in latest_review_list %}
+        <li>
+            <a href="{% url 'critic:review' review.id %}"> {{ review.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews.</p>
+{% endif %}
+
+
 {% if latest_question_list %}
     <ul>
+    <h4>Questions:</h4>
     {% for question in latest_question_list %}
         <li><a href="{% url 'critic:detail' question.id %}"> {{ question.question_text }}</a></li>
-
     {% endfor %}
     </ul>
 {% else %}
@@ -15,16 +31,4 @@
     <li>
         <a href="/critic/{{ question.id }}/">{{ question.question_text }}</a>
     </li>
-{% endif %}
-
-{% if latest_review_list %}
-    <ul>
-    {% for review in latest_review_list %}
-        <li>
-            {{ review.title }}
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No reviews.</p>
 {% endif %}

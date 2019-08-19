@@ -11,10 +11,12 @@ def index(request):
         'latest_question_list': latest_question_list,
         'latest_review_list': latest_review_list,
     }
-
     # context = {}
-
     return render(request, 'critic/index.html', context)
+
+def review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'critic/review.html', {'review': review})
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)

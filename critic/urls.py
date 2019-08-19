@@ -13,4 +13,7 @@ urlpatterns = [
     
     # ex: /critic/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
+
+    # ex: /critic/5/review/
+    path('<int:review_id>/review/', views.review, name='review')
 ]

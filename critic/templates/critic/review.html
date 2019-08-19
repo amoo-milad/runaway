@@ -1,9 +1,133 @@
+<!DOCTYPE html>
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>review: {{ review.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/review.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <nav id="headnav">
+
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Reviews</a></p>
+            </div>
+
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Great Movies</a></p>
+            </div>
+            
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Blogs</a></p>
+            </div>
+            
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Contributors</a></p>
+            </div>
+            
+            <div class="underwonder"><p>
+                <a class="topnav" href="#contact">Contact</a></p>
+            </div>
+
+        </nav>
+        <div style="clear: both;"></div>
+    </header>
 
 
-<h2>{{ review.title }}</h2>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <section>
+        <aside>
+            <div id="poster"></div>
+            <h4>Cast</h4>
+            <ul>
+                <li> <a>Jon Voight</a> as Manny </li>
+                <li> <a>Eric Roberts</a> as Buck </li>
+                <li> <a>Kyle T. Heffner</a> as Frank Barstow </li>
+                <li> <a>John P. Ryan</a> as Ranken </li>
+                <li> <a> Kenneth McMillan</a> as Eddie  </li>
+            </ul>
+        
+            <h4>Directed by</h4>
+            <ul>
+                <li> <a>Andrei Konchalovsky</a> </li>
+            </ul>
 
+            <h4>Produced by</h4>
+            <ul>
+                <li> <a>Menahem Golan</a> </li>
+                <li> <a>Yoram Globus</a> </li>
+            </ul>
+
+            <h4>Screenplay by</h4>
+            <ul>
+                <li> <a>Djordje Milicevic</a> </li>
+                <li> <a>Paul Zindel</a> </li>
+                <li> <a>Edward Bunker</a> </li>
+            </ul>
+
+            <h4>Based of a Screenplay by</h4>
+            <ul>
+                <li> <a>Akira Kurosawa</a> </li>
+            </ul>
+
+            <h4>Photographed by</h4>
+            <ul>
+                <li> <a>Alan Hume</a> </li>
+            </ul>
+
+            <h4>Music by</h4>
+            <ul>
+                <li> <a>Trevor Jones</a> </li>
+            </ul>
+
+            <div class="details">
+                <p>Action, Thriller</p>
+                <p>Rated R</p>
+                <p>111 minutes</p>
+            </div>
+
+        </aside>
+
+
+
+
+
+        <article>
+            <h2>{{ review.title }}</h2>
+
+            <p>{{ review.author }}</p>
+            <p>{{ review.pub_date }}</p>
+
+            <p>{{ review.review_text }}</p>
+        </article>
+    
+    </section>
+
+    <footer>
+        <p>Contact Us</p>
+        <p> Copyright 2019,<br>
+            Ebert Digital LLC<br>
+            About the Site
+        </p>
+    </footer>
+
+
+
+
+
+
+
+
+
+    
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+
+</body>
+</html>
