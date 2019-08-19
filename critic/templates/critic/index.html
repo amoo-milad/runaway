@@ -16,3 +16,15 @@
         <a href="/critic/{{ question.id }}/">{{ question.question_text }}</a>
     </li>
 {% endif %}
+
+{% if latest_review_list %}
+    <ul>
+    {% for review in latest_review_list %}
+        <li>
+            {{ review.title }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews.</p>
+{% endif %}
