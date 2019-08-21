@@ -34,7 +34,7 @@ class Movie(models.Model):
     screen_writer = models.CharField(max_length=100)
     # casts = models.ManyToManyField(Cast)
     # genre = models.CharField(max_length=100)
-    genre = models.ManyToManyField(Genre)
+    genres = models.ManyToManyField(Genre)
     length = models.DurationField()
 
     def __str__(self):
