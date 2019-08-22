@@ -8,13 +8,13 @@
 
 {% if latest_movie_list %}
     <ul>
-    <h4>Movies:</h4>
+    <h4>Latest Movies:</h4>
     {% for movie in latest_movie_list %}
+        
         <li>
             {{ movie.title }}
-            <h2>{{ movie.genres }}<h2>
-
         </li>
+
     {% endfor %}
     </ul>
 {% else %}

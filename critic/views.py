@@ -5,13 +5,13 @@ from django.urls import reverse
 from .models import Question, Choice, Review, Movie
 
 def index(request):
-    latest_movie_list = Movie.objects.order_by('-id')[:2]
-    latest_question_list = Question.objects.order_by('-pub_date')[:4]
-    latest_review_list = Review.objects.order_by('-pub_date')[:5]
+    latest_movie_list = Movie.objects.order_by('-id')[:6]
+    latest_review_list = Review.objects.order_by('-pub_date')[:6]
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
         'latest_movie_list': latest_movie_list,
-        'latest_question_list': latest_question_list,
         'latest_review_list': latest_review_list,
+        'latest_question_list': latest_question_list,
     }
     # context = {}
     return render(request, 'critic/index.html', context)

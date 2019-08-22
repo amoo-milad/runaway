@@ -8,6 +8,7 @@ section {
     border: 1px solid #ccc;
     margin: 1px 30px;
     min-height: 915px; /* ? */
+    min-height: 400px; /* ? */
 }
 
 aside {
