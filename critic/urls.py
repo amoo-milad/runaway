@@ -1,10 +1,9 @@
 from django.urls import path
+
 from . import views
 
-from django.conf import settings
-from django.conf.urls.static import static
-
 app_name = 'critic'
+
 urlpatterns = [
     path('', views.index, name='index'),
 
@@ -18,5 +17,5 @@ urlpatterns = [
     path('<int:question_id>/vote/', views.vote, name='vote'),
 
     # ex: /critic/5/review/
-    path('review/<int:review_id>/', views.review, name='review')
+    path('review/<int:review_id>/', views.review, name='review'),
 ]
