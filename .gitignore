@@ -1,4 +1,5 @@
 django.mo
+/statics/
 
 *.sqlite3
 __pycache__
