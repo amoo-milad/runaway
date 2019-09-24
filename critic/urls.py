@@ -19,4 +19,4 @@ urlpatterns = [
 
     # ex: /critic/5/review/
     path('review/<int:review_id>/', views.review, name='review')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
