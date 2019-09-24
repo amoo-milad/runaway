@@ -28,7 +28,8 @@
     <h4>Reviews:</h4>
     {% for review in latest_review_list %}
         <li>
-            <a href="{% url 'critic:review' review.id %}"> {{ review.title }}</a>
+            <!-- <a href="/critic/{{ review.id }}/review/">{{ review.title }}</a> -->
+            <a href="{% url 'critic:review' review.id %}">{{ review.title }}</a>
         </li>
     {% endfor %}
     </ul>

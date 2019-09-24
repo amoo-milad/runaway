@@ -46,7 +46,12 @@ class Review(models.Model):
     review_text = models.CharField(max_length=2000)
     pub_date = models.DateTimeField('publish date')
     author = models.CharField(max_length=100)
-    title = models.CharField(max_length=100, default=movie)
+    title = models.CharField(max_length=100, default=movie)  # TODO: Remove default
+
+    # def save(self, *args, **kwargs):
+    #     if not self.title:
+    #         self.title = self.movie.title
+    #     return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
