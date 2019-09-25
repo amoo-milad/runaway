@@ -41,12 +41,19 @@ class Movie(models.Model):
         return self.title
 
 
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.author
+
+
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     review_text = models.CharField(max_length=2000)
     pub_date = models.DateTimeField('publish date')
     author_name = models.CharField(max_length=100)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, default=movie)  # TODO: Remove default
 
     # def save(self, *args, **kwargs):
@@ -56,11 +63,4 @@ class Review(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class Author(models.Model):
-    author = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return self.author
 
