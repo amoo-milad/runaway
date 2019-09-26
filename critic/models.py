@@ -41,11 +41,11 @@ class Movie(models.Model):
         return self.title
 
 
-# class Author(models.Model):
-#     name = models.CharField(max_length=100)
+class Author(models.Model):
+    name = models.CharField(max_length=100)
 
-#     def __str__(self):
-#         return self.author
+    def __str__(self):
+        return self.author
 
 
 class Review(models.Model):
