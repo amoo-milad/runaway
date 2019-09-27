@@ -6,6 +6,26 @@
 
 
 
+
+{% if latest_author_list %}
+    <ul>
+    <h4>Authors:</h4>
+    {% for author in latest_author_list %}
+        <li>
+            {{ author.name }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No authors.</p>
+{% endif %}
+
+
+
+
+
+
+
 {% if latest_movie_list %}
     <ul>
     <h4>Latest Movies:</h4>

@@ -2,13 +2,15 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Question, Choice, Review, Movie
+from .models import Question, Choice, Review, Movie, Author
 
 def index(request):
+    latest_author_list = Author.objects.order_by('-id')[:6]
     latest_movie_list = Movie.objects.order_by('-id')[:6]
     latest_review_list = Review.objects.order_by('-pub_date')[:6]
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
+        'latest_author_list': latest_author_list,
         'latest_movie_list': latest_movie_list,
         'latest_review_list': latest_review_list,
         'latest_question_list': latest_question_list,
