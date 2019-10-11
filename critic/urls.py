@@ -7,8 +7,8 @@ app_name = 'critic'
 urlpatterns = [
     path('', views.index, name='index'),
 
-    # ex: /critic/5/
-    path('<int:author_id>/', views.author, name='author'),
+    # ex: /critic/author/5/
+    path('author/<int:author_id>', views.author, name='author'),
 
     # ex: /critic/5/
     path('<int:question_id>/', views.detail, name='detail'),
@@ -19,6 +19,6 @@ urlpatterns = [
     # ex: /critic/5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'),
 
-    # ex: /critic/5/review/
+    # ex: /critic/review/5/
     path('review/<int:review_id>/', views.review, name='review'),
 ]

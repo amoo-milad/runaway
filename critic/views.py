@@ -20,7 +20,7 @@ def index(request):
 
 def author(request, author_id):
     author = get_object_or_404(Author, pk=author_id)
-    author_review_list = Review.objects.filter(author_name=author.name)
+    author_review_list = Review.objects.filter(author_id=author_id)
     context = {
         'author_review_list': author_review_list,
         'author': author,
