@@ -18,6 +18,15 @@ def index(request):
     # context = {}
     return render(request, 'critic/index.html', context)
 
+def author(request, author_id):
+    author = get_object_or_404(Author, pk=author_id)
+    author_review_list = Review.objects.filter(author_name=author.name)
+    context = {
+        'author_review_list': author_review_list,
+        'author': author,
+    }
+    return render(request, 'critic/author.html', context)
+
 def review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
     return render(request, 'critic/review.html', {'review': review})

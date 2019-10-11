@@ -7,22 +7,19 @@
 
 
 
+
 {% if latest_author_list %}
     <ul>
     <h4>Authors:</h4>
     {% for author in latest_author_list %}
         <li>
-            {{ author.name }}
+            <a href="{% url 'critic:author' author.id %}">{{ author.name }}</a>
         </li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No authors.</p>
 {% endif %}
-
-
-
-
 
 
 

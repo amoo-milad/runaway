@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}">
+
+<h2>{{ author.name }} published:</h2>
+
+
+
+{% if author_review_list %}
+    <ul>
+    {% for review in author_review_list %}
+        <li><h3>{{ review.title }}</h3></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h3> no 'author_review_list' found! </h3>
+{% endif %}
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

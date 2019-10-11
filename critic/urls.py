@@ -8,6 +8,9 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # ex: /critic/5/
+    path('<int:author_id>/', views.author, name='author'),
+
+    # ex: /critic/5/
     path('<int:question_id>/', views.detail, name='detail'),
     
     # ex: /critic/5/results/
