@@ -2,14 +2,18 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}">
 
-<h2>{{ author.name }} published:</h2>
+<h2>{{ author.name }} has published:</h2>
 
 
 
 {% if author_review_list %}
     <ul>
     {% for review in author_review_list %}
-        <li><h3>{{ review.title }}</h3></li>
+        <li>
+            <h3><a href="{% url 'critic:review' review.id %}">{{ review.title }}</a></h3>
+            on {{ review.review_text|truncatewords:10 }}
+        </li>
+
     {% endfor %}
     </ul>
 {% else %}
