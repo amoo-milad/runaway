@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - Runaway </title>
+    <link rel="stylesheet" href="{% static 'critic/base.css' %}">
+    {% block style %}{% endblock %}
+</head>
+
+<body>    
+    <header>
+        <nav id="headnav">
+
+            <div class="underwonder"><p>
+                <img id="logo" src="{% static 'critic/img/logo.png' %}" alt="logo" /></p>
+            </div>
+
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Reviews</a></p>
+            </div>
+
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Great Movies</a></p>
+            </div>
+            
+            <div class="underwonder"><p>
+                <a class="topnav" href="">Critics</a></p>
+            </div>
+            
+            <div class="underwonder"><p>
+                <a class="topnav" href="">About</a></p>
+            </div>
+
+        </nav>
+        <div style="clear: both;"></div>
+    </header>
+
+    <main>
+        <rightie>
+            <aside class="sidebar">
+                {% block sidebar %}
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li>Rate this Movie</li>
+                </ul>
+                {% endblock sidebar %}
+            </aside>
+        </rightie>
+
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+</body>
+</html>

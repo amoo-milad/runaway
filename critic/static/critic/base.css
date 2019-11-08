@@ -1,0 +1,127 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #ddd;
+  margin: 30px 50px;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #1f4078;
+}
+
+a:hover {
+  color: #3976dc;
+  cursor: pointer;
+}
+
+
+/************** HEADER *****************/
+header {
+  background-color: #f7f7f7;
+}
+
+header a {
+  color: #1f7a99;
+}
+
+#logo {
+  padding: -10px;
+  margin: -15px 4px;
+}
+/*******************************/
+.underwonder a {
+  color: #ca3c08;
+  color: blue;
+  text-decoration: none;
+  background-color: transparent;
+}
+/*******************************/
+#headnav{
+  width: 100%;
+  clear: both;
+  margin-left: 28px
+}
+#headnav a {
+  color: #008B8B;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+}
+#headnav > a:hover{
+  text-decoration: underline #b22222;
+}
+/*******************************/
+.underwonder{
+  float: left;
+  padding: 10px;
+}
+.underwonder a {
+  line-height: 24px;
+  position: relative;
+}
+.underwonder a::after {
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  position: absolute;
+  left: auto;
+  right: 0;
+  z-index: 1;
+  -webkit-transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) 0s;
+  background: #b22222;
+  content: "";
+}
+.underwonder a:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto; }
+/*********** End of HEADER *********/
+
+
+
+/*************** MAIN *************/
+main {
+  background-color: #fff;
+  padding: 0px 30px;
+}
+/*********** End of MAIN *********/
+
+
+
+/*************** ASIDE *************/
+aside {
+  float: left;
+  background: #ddd;
+  width: 250px;
+  font-size: small;
+}
+
+.sidebar {
+  float: right;
+  height: 300px;
+  /*margin-top: 80px;*/
+  /*margin-left: 10px;*/
+  color: #1f7a99;
+}
+
+aside li, ul {
+  list-style: none;
+  padding: .2em;
+  padding-left: 5px;
+}
+
+aside h4 {
+  padding-left: 6px;
+  background-color: #694c45;
+  background-color: #205b6e;
+  color: #fff;
+  padding: 6px;
+  /*font-size: 17px;*/
+  margin: 0;
+}
+/************ End of ASIDE **********/

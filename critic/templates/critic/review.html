@@ -1,117 +1,58 @@
-<!DOCTYPE html>
+{% extends "critic/base.html" %}
 {% load static %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>review: {{ review.title }}</title>
+
+{% block title %}Review: {{ review.title }}{% endblock title %}
+
+
+{% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'critic/review.css' %}">
-</head>
+{% endblock style %}
 
-<body>
-
-    <header>
-        <nav id="headnav">
-
-            <div class="underwonder"><p>
-                <a class="topnav" href="">Reviews</a></p>
-            </div>
-
-            <div class="underwonder"><p>
-                <a class="topnav" href="">Great Movies</a></p>
-            </div>
-            
-            <div class="underwonder"><p>
-                <a class="topnav" href="">Blogs</a></p>
-            </div>
-            
-            <div class="underwonder"><p>
-                <a class="topnav" href="">Contributors</a></p>
-            </div>
-            
-            <div class="underwonder"><p>
-                <a class="topnav" href="#contact">Contact</a></p>
-            </div>
-
-        </nav>
-        <div style="clear: both;"></div>
-    </header>
-
-
-
+{% block content %}
     <section>
-        <aside>
-            <div id="poster"></div>
-            
-<!--
-            <div id="poster"></div>
-            <h4>Cast</h4>
-            <ul>
-                <li> <a>Jon Voight</a> as Manny </li>
-                <li> <a>Eric Roberts</a> as Buck </li>
-                <li> <a>Kyle T. Heffner</a> as Frank Barstow </li>
-                <li> <a>John P. Ryan</a> as Ranken </li>
-                <li> <a> Kenneth McMillan</a> as Eddie  </li>
-            </ul>
--->
-        
-            <h4>Directed by</h4>
-            <ul>
-                <li> <a>{{ review.movie.director }}</a> </li>
-            </ul>
 
-            <h4>Produced by</h4>
-            <ul>
-                <li> <a>{{ review.movie.producer }}</a> </li>
-            </ul>
+        <leftie>
+            <aside>
+                <h4>Directed by</h4>
+                <ul>
+                    <li> <a>{{ review.movie.director }}</a> </li>
+                </ul>
 
-            <h4>Screenplay by</h4>
-            <ul>
-                <li> <a>{{ review.movie.screen_writer }}</a> </li>
-            </ul>
+                <h4>Produced by</h4>
+                <ul>
+                    <li> <a>{{ review.movie.producer }}</a> </li>
+                </ul>
 
-<!--
-            <h4>Based of a Screenplay by</h4>
-            <ul>
-                <li> <a>Akira Kurosawa</a> </li>
-            </ul>
+                <h4>Screenplay by</h4>
+                <ul>
+                    <li> <a>{{ review.movie.screen_writer }}</a> </li>
+                </ul>
 
-            <h4>Photographed by</h4>
-            <ul>
-                <li> <a>Alan Hume</a> </li>
-            </ul>
-
-            <h4>Music by</h4>
-            <ul>
-                <li> <a>Trevor Jones</a> </li>
-            </ul>
--->
-
-            <div class="details">
-                <p>
-                {% for genre in review.movie.genres.all %}
-                    {{ genre }},
-                {% endfor %}
-                </p>
-                <p>Rated R</p>
-                <p>111 minutes</p>
-            </div>
-
-        </aside>
+                <div class="details">
+                    <p>
+                    {% for genre in review.movie.genres.all %}
+                        {{ genre }},
+                    {% endfor %}
+                    </p>
+                    <p>Rated R</p>
+                    <p>{{ review.movie.length }}</p>
+                </div>
+            </aside>
+        </leftie>
 
 
+        <middlie>
+            <article>
+                <h2>{{ review.title }}</h2>
 
+                <span>{{ review.author }}</span> <br>
+                <span>{{ review.pub_date }}</span>
 
+                <p>{{ review.review_text|linebreaks }}</p>
+            </article>
+        </middlie>
 
-        <article>
-            <h2>{{ review.title }}</h2>
-
-            <p>{{ review.author }}</p>
-            <p>{{ review.pub_date }}</p>
-
-            <p>{{ review.review_text }}</p>
-        </article>
-    
     </section>
 
     <footer>
@@ -137,4 +78,4 @@
 
 
 </body>
-</html>
+{% endblock content %}

@@ -1,35 +1,19 @@
+{% extends "critic/base.html" %}
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}">
+{% block title %}Home{% endblock title %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'critic/review.css' %}"> -->
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}"> -->
 
-<h1>Hi Critics!</h1>
-
-
-
-
-
-{% if latest_author_list %}
-    <ul>
-    <h4>Authors:</h4>
-    {% for author in latest_author_list %}
-        <li>
-            <a href="{% url 'critic:author' author.id %}">{{ author.name }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No authors.</p>
-{% endif %}
-
-
+{% block content %}
 
 {% if latest_movie_list %}
     <ul>
-    <h4>Latest Movies:</h4>
+    <h4>Latest Added Movies:</h4>
     {% for movie in latest_movie_list %}
         
         <li>
-            {{ movie.title }}
+            %89 <a href="#">{{ movie.title }} ({{ movie.year }})</a> 
         </li>
 
     {% endfor %}
@@ -42,11 +26,12 @@
 
 {% if latest_review_list %}
     <ul>
-    <h4>Reviews:</h4>
+    <h4>Latest Reviews:</h4>
     {% for review in latest_review_list %}
         <li>
             <!-- <a href="/critic/{{ review.id }}/review/">{{ review.title }}</a> -->
-            <a href="{% url 'critic:review' review.id %}">{{ review.title }}</a>
+            On <a href="{% url 'critic:review' review.id %}">{{ review.movie }}</a>
+            , by <a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a>
         </li>
     {% endfor %}
     </ul>
@@ -54,18 +39,19 @@
     <p>No reviews.</p>
 {% endif %}
 
-
-
-{% if latest_question_list %}
+<!-- 
+{% if latest_author_list %}
     <ul>
-    <h4>Questions:</h4>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'critic:detail' question.id %}"> {{ question.question_text }}</a></li>
+    <h4>Authors:</h4>
+    {% for author in latest_author_list %}
+        <li>
+            <a href="{% url 'critic:author' author.id %}">{{ author.name }}</a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
-    <li>
-        <a href="/critic/{{ question.id }}/">{{ question.question_text }}</a>
-    </li>
+    <p>No authors.</p>
 {% endif %}
+ -->
+
+{% endblock content %}
