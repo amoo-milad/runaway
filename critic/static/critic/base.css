@@ -19,28 +19,39 @@ a:hover {
 }
 
 
+/************** TABLE *****************/
+table {
+  border-collapse: collapse;
+  /*width: 100%;*/
+}
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+th:first-child, td:first-child {min-width: 25%;}
+/************ End of TABLE *************/
+
+
+/***************************************/
 /************** HEADER *****************/
 header {
   background-color: #f7f7f7;
 }
 
 header a {
-  color: #1f7a99;
+  /*color: #1f7a99;*/
 }
 
 #logo {
   padding: -10px;
   margin: -15px 4px;
 }
-/*******************************/
-.underwonder a {
-  color: #ca3c08;
-  color: blue;
-  text-decoration: none;
-  background-color: transparent;
-}
-/*******************************/
-#headnav{
+/*** HEADER: headnav ***/
+#headnav {
   width: 100%;
   clear: both;
   margin-left: 28px
@@ -51,17 +62,19 @@ header a {
   font-size: 15px;
   font-weight: 500;
 }
-#headnav > a:hover{
+#headnav > a:hover {
   text-decoration: underline #b22222;
 }
-/*******************************/
-.underwonder{
+/*** HEADER: underwonder ***/
+.underwonder {
   float: left;
   padding: 10px;
 }
 .underwonder a {
   line-height: 24px;
   position: relative;
+  /*text-decoration: none;*/
+  /*background-color: transparent;*/
 }
 .underwonder a::after {
   width: 0;
@@ -79,15 +92,18 @@ header a {
 .underwonder a:hover::after {
   width: 100%;
   left: 0;
-  right: auto; }
-/*********** End of HEADER *********/
+  right: auto;
+}
+/************* End of HEADER ***********/
+/***************************************/
 
 
 
 /*************** MAIN *************/
 main {
   background-color: #fff;
-  padding: 0px 30px;
+  padding: 10px 30px;
+  margin: 10px;
 }
 /*********** End of MAIN *********/
 
@@ -99,14 +115,9 @@ aside {
   background: #ddd;
   width: 250px;
   font-size: small;
-}
-
-.sidebar {
-  float: right;
-  height: 300px;
-  /*margin-top: 80px;*/
-  /*margin-left: 10px;*/
-  color: #1f7a99;
+  /*margin: 10px;*/
+  /*margin-bottom: 100px;*/
+  /*padding-bottom: 100px;*/
 }
 
 aside li, ul {
@@ -122,6 +133,88 @@ aside h4 {
   color: #fff;
   padding: 6px;
   /*font-size: 17px;*/
-  margin: 0;
+  margin: 0px;
+}
+
+#sidebar {
+  float: right;
+  height: 300px;
+  margin-top: 16px;
+  margin-left: 10px;
+  color: #1f7a99;
+  bottom: 100px;
+  border: 4px dashed #fff;
 }
 /************ End of ASIDE **********/
+
+
+
+/************ SEPARATOR **********/
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #000;
+}
+.separator::before {
+    margin-right: .25em;
+    padding-right: -200px;
+}
+.separator::after {
+    margin-left: .25em;
+}
+/********* End of SEPARATOR *******/
+
+
+
+/************** MEDIA *************/
+@media screen 
+  and (min-width: 1300px) {
+    #headnav > div:nth-child(2) {
+      background-color: darkblue;
+    }
+}
+
+
+@media screen 
+  and (max-width: 1300px) {
+    #headnav > div:nth-child(2) {
+      background-color: lightgreen;
+    }
+}
+
+
+@media screen 
+  and (max-width: 1200px) {
+    #headnav > div:nth-child(2) {
+      background-color: lightyellow;
+    }
+
+    
+}
+
+
+@media screen and (max-width: 780px) {
+  /* tablet */ 
+  #headnav > div:nth-child(2) {
+    background-color: lightblue;
+  }
+
+  #sidebar{
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+ /* mobile */ 
+  #headnav > div:nth-child(2) {
+    color: red;
+    background-color: lightgray;
+  }
+}
+/********* End of MEDIA *******/

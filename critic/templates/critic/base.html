@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}{% endblock %} - Runaway </title>
     <link rel="stylesheet" href="{% static 'critic/base.css' %}">
     {% block style %}{% endblock %}
@@ -38,17 +39,15 @@
     </header>
 
     <main>
-        <rightie>
-            <aside class="sidebar">
-                {% block sidebar %}
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blog/">Blog</a></li>
-                    <li>Rate this Movie</li>
-                </ul>
-                {% endblock sidebar %}
-            </aside>
-        </rightie>
+        <aside id="sidebar">
+            {% block sidebar %}
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li>Rate this Movie</li>
+            </ul>
+            {% endblock sidebar %}
+        </aside>
 
         <div id="content">
             {% block content %}{% endblock %}

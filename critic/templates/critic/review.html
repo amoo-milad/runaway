@@ -12,8 +12,8 @@
 {% block content %}
     <section>
 
-        <leftie>
-            <aside>
+        <!-- <leftie> -->
+            <aside id="leftie">
                 <h4>Directed by</h4>
                 <ul>
                     <li> <a>{{ review.movie.director }}</a> </li>
@@ -39,11 +39,11 @@
                     <p>{{ review.movie.length }}</p>
                 </div>
             </aside>
-        </leftie>
+        <!-- </leftie> -->
 
 
-        <middlie>
-            <article>
+        <!-- <middlie> -->
+            <article id="middlie">
                 <h2>{{ review.title }}</h2>
 
                 <span>{{ review.author }}</span> <br>
@@ -51,7 +51,7 @@
 
                 <p>{{ review.review_text|linebreaks }}</p>
             </article>
-        </middlie>
+        <!-- </middlie> -->
 
     </section>
 

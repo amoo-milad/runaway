@@ -51,7 +51,7 @@ class Author(models.Model):
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
-    review_text = models.CharField(max_length=2000)
+    review_text = models.TextField(max_length=2000)
     pub_date = models.DateTimeField('publish date')
     author_name = models.CharField(max_length=100)
     title = models.CharField(max_length=100, default=movie)  # TODO: Remove default
