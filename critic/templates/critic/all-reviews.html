@@ -17,6 +17,7 @@
     <tr>
         <th>Title | Year</th>
         <th>Critic</th>
+        <th>Rate</th>
         <th>Review</th>
     </tr>
 
@@ -27,6 +28,8 @@
             <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
 
             <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
+
+            <td><a href="{% url 'critic:review' review.id %}">{{ review.movie_rating }} {% 2+ 100 %}</a></td>
 
             <td>{{ review.review_text|truncatewords:30 }} 
             <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>

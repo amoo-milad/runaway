@@ -33,10 +33,10 @@ class Movie(models.Model):
     director = models.CharField(max_length=100)
     producer = models.CharField(max_length=100)
     screen_writer = models.CharField(max_length=100)
-    # casts = models.ManyToManyField(Cast)
     genres = models.ManyToManyField(Genre)
     length = models.DurationField()
     cover_image = models.ImageField(upload_to='movies/cover/', null=True)
+    # casts = models.ManyToManyField(Cast)
 
     def __str__(self):
         # movie.cover_image.name == 'asghar.jpg'
@@ -52,14 +52,19 @@ class Author(models.Model):
         return self.name
 
 
+# QuerySet
+# movie = Movie.objects.last()
+# movie.review_set.filter()
+
+
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     review_text = models.TextField(max_length=2000)
     pub_date = models.DateTimeField('publish date')
+    movie_rating = models.IntegerField(null=True)
     # point = models.IntegerField(default=lambda: random.randint(30, 98))
 
-    # movie_rating = models.IntegerField(null=True)
 
     title = models.CharField(max_length=100, default=movie)  # TODO: Remove default
 
