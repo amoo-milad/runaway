@@ -1,6 +1,8 @@
 
 section {
-  min-height: 400px;
+  /*min-height: 400px;*/
+  /*border: 2px dashed red;*/
+  /*position: absolute;*/
 }
 
 article h2 {
@@ -15,17 +17,6 @@ article {
 
 article p {
   font-size: large;
-}
-
-footer {
-  clear: both;
-  margin: 1px -30px;
-  min-height: 120px;
-  padding: 17px 50px;
-  font-size: x-small;
-  font-weight: bold;
-  background: #3b4040;
-  color: #fff;
 }
 
 .details {
@@ -46,14 +37,20 @@ footer {
   width: 45%;
 }
 
+#cover {
+  width: 250px;
+  width: 100%;
+}
+
+#no-cover {
+  height: 270px;
+  width: 200px;
+  padding: 30px 0px 10px 10px;
+}
 
 /************** MEDIA *************/
 @media screen 
   and (max-width: 1200px) {
-    #sidebar{
-      display: none;
-    }
-
     #middlie {
       width: calc(100% - 270px);
   }
@@ -66,6 +63,3 @@ footer {
     width: 100%;
   }
 }
-
-
-

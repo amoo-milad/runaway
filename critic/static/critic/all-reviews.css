@@ -1,0 +1,22 @@
+
+@media screen 
+  and (max-width: 780px) {
+  /*lightblue*/
+  th:first-child, td:first-child {
+    display: none;
+  }
+}
+
+
+@media screen 
+  and (max-width: 480px) {
+  /*lightgray*/
+  th:first-child, td:first-child {
+    display: block;
+    white-space: pre-wrap;
+  }
+
+  th:last-child, td:last-child {
+    display: none;
+  }
+}

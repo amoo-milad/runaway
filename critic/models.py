@@ -1,4 +1,5 @@
 from django.db import models
+import random
 
 
 class Question(models.Model):
@@ -33,11 +34,14 @@ class Movie(models.Model):
     producer = models.CharField(max_length=100)
     screen_writer = models.CharField(max_length=100)
     # casts = models.ManyToManyField(Cast)
-    # genre = models.CharField(max_length=100)
     genres = models.ManyToManyField(Genre)
     length = models.DurationField()
+    cover_image = models.ImageField(upload_to='movies/cover/', null=True)
 
     def __str__(self):
+        # movie.cover_image.name == 'asghar.jpg'
+        # movie.cover_image.url == 'http://www.com/media/photos/2017/5/23/asghar.jpg'
+        # physical path == /home/runaway-project/media/photos/2017/5/23/asghar.jpg
         return self.title
 
 
@@ -53,7 +57,10 @@ class Review(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     review_text = models.TextField(max_length=2000)
     pub_date = models.DateTimeField('publish date')
-    author_name = models.CharField(max_length=100)
+    # point = models.IntegerField(default=lambda: random.randint(30, 98))
+
+    # movie_rating = models.IntegerField(null=True)
+
     title = models.CharField(max_length=100, default=movie)  # TODO: Remove default
 
     # def save(self, *args, **kwargs):

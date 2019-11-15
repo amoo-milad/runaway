@@ -1,10 +1,12 @@
 django.mo
 /statics/
+/media/
 
 *.sqlite3
 __pycache__
 *.py[oc]
 
+.ignore
 .idea
 .vscode
 .cache

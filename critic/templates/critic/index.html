@@ -2,14 +2,55 @@
 {% load static %}
 
 {% block title %}Home{% endblock title %}
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'critic/review.css' %}"> -->
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'critic/style.css' %}"> -->
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/index.css' %}">
+{% endblock style %}
+
 
 {% block content %}
 
+{% if latest_review_list %}
+    <h3 class="headshot">Latest Reviews</h2>
+    <ul>
+    {% for review in latest_review_list %}
+        <li>
+            <!-- <a href="/critic/{{ review.id }}/review/">{{ review.title }}</a> -->
+            On <a href="{% url 'critic:review' review.id %}">{{ review.movie }}</a> ({{ review.movie.year }}), by <a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No reviews.</p>
+{% endif %}
+
+
+
+
+{% for movie in latest_movie_list %}
+    <div class="cover-images">
+        {% if movie.cover_image %}
+
+            <img class="cover" src="{{ movie.cover_image.url }}" />
+            <span class="caption">{{ movie.title }}</span>
+
+        {% else %}
+            <img class="no-cover" src="{% static 'critic/img/no-cover.png' %}" />
+            <span class="caption">{{ movie.title }}</span>
+        {% endif %}
+    </div>
+{% empty %}
+    <p>No movies.</p>
+{% endfor %}
+
+<div class="clearleft"></div>
+
+
+
+
 {% if latest_movie_list %}
     <ul>
-    <h4>Latest Added Movies:</h4>
+    <h3 class="headshot">Latest Added Movies</h3>
     {% for movie in latest_movie_list %}
         
         <li>
@@ -24,34 +65,6 @@
 
 
 
-{% if latest_review_list %}
-    <ul>
-    <h4>Latest Reviews:</h4>
-    {% for review in latest_review_list %}
-        <li>
-            <!-- <a href="/critic/{{ review.id }}/review/">{{ review.title }}</a> -->
-            On <a href="{% url 'critic:review' review.id %}">{{ review.movie }}</a>
-            , by <a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No reviews.</p>
-{% endif %}
 
-<!-- 
-{% if latest_author_list %}
-    <ul>
-    <h4>Authors:</h4>
-    {% for author in latest_author_list %}
-        <li>
-            <a href="{% url 'critic:author' author.id %}">{{ author.name }}</a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No authors.</p>
-{% endif %}
- -->
 
 {% endblock content %}

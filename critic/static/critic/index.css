@@ -1,0 +1,33 @@
+.cover, .no-cover {
+  width: 100px;
+  height: 149px;
+  /*float: left;*/
+  margin: 3px;
+}
+
+.caption {
+  display: block;
+  font-size: small;
+}
+
+.cover-images {
+    /*border: 2px dashed red;*/
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 110px;
+    float: left;
+}
+
+
+
+
+@media screen and (min-width: 1000px) { /* light */
+  #sidebar{
+    display: block;
+  }
+  
+  .headshot {
+    margin-right: 270px;
+  }
+}

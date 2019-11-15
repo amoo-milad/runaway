@@ -7,7 +7,7 @@ from .models import Question, Choice, Review, Movie, Author
 def index(request):
     latest_author_list = Author.objects.order_by('-id')[:6]
     latest_movie_list = Movie.objects.order_by('-id')[:6]
-    latest_review_list = Review.objects.order_by('-pub_date')[:6]
+    latest_review_list = Review.objects.order_by('-pub_date')[:8]
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {
         'latest_author_list': latest_author_list,
@@ -57,4 +57,19 @@ def vote(request, question_id):
         # user hits the Back button.
         return HttpResponseRedirect(reverse('critic:results', args=(question.id,)))
 
+
+def allreviews(request):
+    all_review_list = Review.objects.order_by('-pub_date')
+    context = {
+        'all_review_list': all_review_list,
+    }
+    return render(request, 'critic/all-reviews.html', context)
+
+
+def allcritics(request):
+    all_critics_list = Author.objects.all()
+    context = {
+        'all_critics_list': all_critics_list,
+    }
+    return render(request, 'critic/all-critics.html', context)
 

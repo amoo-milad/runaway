@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>{% block title %}{% endblock %} - Runaway </title>
+    <link rel="icon" href="{% static 'critic/img/logo.png' %}" type="image/gif" sizes="16x16">
+    
+    <!-- Style Css -->
+    <link rel="stylesheet" href="{% static 'critic/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'critic/base.css' %}">
     {% block style %}{% endblock %}
 </head>
@@ -15,11 +19,11 @@
         <nav id="headnav">
 
             <div class="underwonder"><p>
-                <img id="logo" src="{% static 'critic/img/logo.png' %}" alt="logo" /></p>
+                <a href="{% url 'critic:index' %}"><img id="logo" src="{% static 'critic/img/logo.png' %}" alt="logo" /></a></p>
             </div>
 
             <div class="underwonder"><p>
-                <a class="topnav" href="">Reviews</a></p>
+                <a class="topnav" href="{% url 'critic:all-reviews' %}">Reviews</a></p>
             </div>
 
             <div class="underwonder"><p>
@@ -27,7 +31,7 @@
             </div>
             
             <div class="underwonder"><p>
-                <a class="topnav" href="">Critics</a></p>
+                <a class="topnav" href="{% url 'critic:all-critics' %}">Critics</a></p>
             </div>
             
             <div class="underwonder"><p>
@@ -41,17 +45,35 @@
     <main>
         <aside id="sidebar">
             {% block sidebar %}
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/blog/">Blog</a></li>
-                <li>Rate this Movie</li>
-            </ul>
+                <ul>
+                    <li><a href="{% url 'critic:index' %}">Home</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li>Rate this Movie</li>
+                </ul>
+                <a href="{% url 'critic:index' %}"><img id="now-showing" src="{% static 'critic/img/now-showing.png' %}" alt="logo" /></a>
             {% endblock sidebar %}
         </aside>
 
         <div id="content">
             {% block content %}{% endblock %}
         </div>
+
+        <div class="clearboth"></div>
     </main>
+
+
+
+    <footer>
+        <p>Contact Us</p>
+        <p> Copyright 2019,<br>
+            Digital LLC<br>
+            About the Site
+        </p>
+    </footer>
+
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 </body>
 </html>
+

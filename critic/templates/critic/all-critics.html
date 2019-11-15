@@ -1,0 +1,30 @@
+{% extends "critic/base.html" %}
+{% load static %}
+
+{% block title %} Critics {% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/all-reviews.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<h3 class="headshot">All Critics</h3>
+
+<div class="separator">OF ALL TIMES</div>
+
+
+{% if all_critics_list %}
+    <ul>
+    {% for author in all_critics_list %}
+        <li>
+            <a href="{% url 'critic:author' author.id %}">{{ author.name }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No authors.</p>
+{% endif %}
+
+
+{% endblock content %}

@@ -8,6 +8,10 @@ body {
   font-family: sans-serif;
 }
 
+h1, h2, h3, h4, th, .separator {
+  font-family: "Poppins", sans-serif;
+}
+
 a {
   text-decoration: none;
   color: #1f4078;
@@ -16,6 +20,30 @@ a {
 a:hover {
   color: #3976dc;
   cursor: pointer;
+}
+
+.clearboth {
+  clear: both;
+}
+
+.clearleft {
+  clear: left;
+}
+
+.headshot {
+  background-color: #205b6e;
+  color: #fff;
+  padding: 12px;
+  margin-right: 270px;
+  min-width: 200px;
+  line-height: 29px;
+}
+
+#now-showing {
+  /*background-color: #205b6e;*/
+  padding: 12px;
+  margin: 0px 20px;
+  width: 200px;
 }
 
 
@@ -32,7 +60,10 @@ th, td {
 }
 
 tr:nth-child(even) {background-color: #f2f2f2;}
-th:first-child, td:first-child {min-width: 25%;}
+/*th:first-child, td:first-child {min-width: 25%;}*/
+
+th:first-child, td:first-child, td:nth-child(2) { white-space: nowrap; }
+
 /************ End of TABLE *************/
 
 
@@ -40,6 +71,7 @@ th:first-child, td:first-child {min-width: 25%;}
 /************** HEADER *****************/
 header {
   background-color: #f7f7f7;
+  font-family: "Poppins", sans-serif;
 }
 
 header a {
@@ -70,11 +102,16 @@ header a {
   float: left;
   padding: 10px;
 }
+/*:not(first-child) {}*/
 .underwonder a {
   line-height: 24px;
   position: relative;
   /*text-decoration: none;*/
   /*background-color: transparent;*/
+}
+
+.underwonder:first-child a { /* ??? */
+  position: inherit;
 }
 .underwonder a::after {
   width: 0;
@@ -103,7 +140,8 @@ header a {
 main {
   background-color: #fff;
   padding: 10px 30px;
-  margin: 10px;
+  /*margin: 10px;*/
+  /*margin-top: 10px;*/
 }
 /*********** End of MAIN *********/
 
@@ -171,50 +209,102 @@ aside h4 {
 
 
 
+/************* FOOTER *************/
+footer {
+  clear: both;
+  /*margin: 10px 0px;*/
+  min-height: 120px;
+  /*padding: 17px 50px;*/
+  /*padding: 50px;*/
+  padding: 25px 50px;
+  font-size: x-small;
+  font-weight: bold;
+  background: #3b4040;
+  color: #fff;
+}
+/********* End of FOOTER **********/
+
+
+
 /************** MEDIA *************/
-@media screen 
-  and (min-width: 1300px) {
+@media screen and (min-width: 1300px) { /* darkblue */
+}
+
+
+@media screen and (max-width: 1300px) { /* lightgreen */
+}
+
+
+@media screen and (max-width: 1200px) { /* lightyellow */
+  #sidebar{
+    display: none;
+  }
+  
+  .headshot {
+    margin-right: 0px;
+  }
+}
+
+
+@media screen and (max-width: 780px) { /* lightblue */
+  /* tablet */
+}
+
+
+@media screen and (max-width: 580px) { /* purple */
+  #headnav:not(:nth-child(1)):not(:nth-child(2)) {
+    /*display: none;*/
+  }
+}
+
+
+@media screen and (max-width: 480px) { /* lightgray */
+  /* mobile */ 
+}
+/********* End of MEDIA *******/
+
+
+
+
+
+
+/**** COLORS for different widthes ****/
+/*
+@media screen and (min-width: 1300px) {
     #headnav > div:nth-child(2) {
       background-color: darkblue;
     }
 }
 
-
-@media screen 
-  and (max-width: 1300px) {
+@media screen and (max-width: 1300px) {
     #headnav > div:nth-child(2) {
       background-color: lightgreen;
     }
 }
 
-
-@media screen 
-  and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
     #headnav > div:nth-child(2) {
       background-color: lightyellow;
-    }
-
-    
+    } 
 }
 
-
 @media screen and (max-width: 780px) {
-  /* tablet */ 
   #headnav > div:nth-child(2) {
     background-color: lightblue;
   }
-
-  #sidebar{
-    display: none;
-  }
 }
 
+@media screen and (max-width: 580px) {
+  #headnav > div:nth-child(2) {
+    background-color: purple;
+  }
+}
 
 @media screen and (max-width: 480px) {
- /* mobile */ 
   #headnav > div:nth-child(2) {
-    color: red;
     background-color: lightgray;
+    color: red;
   }
 }
-/********* End of MEDIA *******/
+*/
+/********* End of COLORS *******/

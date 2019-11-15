@@ -2,7 +2,7 @@
 {% load static %}
 
 
-{% block title %}Review: {{ review.title }}{% endblock title %}
+{% block title %}{{ review.movie.title }} Reviewed by {{review.author}} {% endblock title %}
 
 
 {% block style %}
@@ -14,6 +14,12 @@
 
         <!-- <leftie> -->
             <aside id="leftie">
+                {% if review.movie.cover_image %}
+                    <img id="cover" src="{{ review.movie.cover_image.url }}" />
+                {% else %}
+                    <img id="no-cover" src="{% static 'critic/img/no-cover.png' %}" />
+                {% endif %}
+
                 <h4>Directed by</h4>
                 <ul>
                     <li> <a>{{ review.movie.director }}</a> </li>
@@ -55,27 +61,7 @@
 
     </section>
 
-    <footer>
-        <p>Contact Us</p>
-        <p> Copyright 2019,<br>
-            Ebert Digital LLC<br>
-            About the Site
-        </p>
-    </footer>
+    <div class="clearboth"></div>
 
 
-
-
-
-
-
-
-
-    
-
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-
-
-</body>
 {% endblock content %}

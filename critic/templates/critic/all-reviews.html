@@ -1,41 +1,40 @@
 {% extends "critic/base.html" %}
 {% load static %}
 
-{% block title %} {{author.name}} {% endblock title %}
+{% block title %} All Reviews {% endblock title %}
 
 {% block style %}
     <link rel="stylesheet" type="text/css" href="{% static 'critic/all-reviews.css' %}">
 {% endblock style %}
-    
-{% block content %}
-<h3 class="headshot">{{ author.name }}</h3>
 
-<div class="separator">MOVIE REVIEWS</div>
+{% block content %}
+
+<h3 class="headshot">Reviews</h3>
+
+<div class="separator">OF ALL TIMES</div>
 
 <table>
     <tr>
         <th>Title | Year</th>
-        <th>Points</th>
-        <th>Quote</th>
-        <!-- <th>Published as</th> -->
+        <th>Critic</th>
+        <th>Review</th>
     </tr>
 
 
-{% if author_review_list %}
-    {% for review in author_review_list %}
+{% if all_review_list %}
+    {% for review in all_review_list %}
         <tr>
             <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
 
-            <td>* * *<a href="{% url 'critic:review' review.id %}">{{ review.xxx }}</a></td>
+            <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
 
             <td>{{ review.review_text|truncatewords:30 }} 
             <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
 
-            <!-- <td><a href="{% url 'critic:review' review.id %}">{{ review.title }}</a></td> -->
         </tr>
     {% endfor %}
 {% else %}
-    <h3> no 'author_review_list' found! </h3>
+    <h3> no 'all_review_list' found! </h3>
 {% endif %}
 
 </table>

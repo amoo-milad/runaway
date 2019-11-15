@@ -21,4 +21,11 @@ urlpatterns = [
 
     # ex: /critic/review/5/
     path('review/<int:review_id>/', views.review, name='review'),
+
+    # ex: /critic/allreviews/
+    path('all-reviews/', views.allreviews, name='all-reviews'),
+
+    # ex: /critic/allcritics/
+    path('all-critics/', views.allcritics, name='all-critics'),
+
 ]
