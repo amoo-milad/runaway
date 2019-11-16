@@ -30,6 +30,7 @@
 
 <table>
     <tr>
+        <th>Rank</th>
         <th>Title | Year</th>
         <th>Director</th>
         <th>Rate It!</th>
@@ -38,6 +39,8 @@
 
 {% for movie in all_movies_list %}
     <tr>
+        <td>{{ forloop.counter }}</td>
+
         <td><a href="{% url 'critic:movie_detail' movie.id %}">{{ movie.title }}</a> ({{movie.year}})</td>
 
         <td><a href="{% url 'critic:movie_detail' movie.id %}">{{ movie.director }}</a>
@@ -46,11 +49,11 @@
             <div class="stars">
                 <div class="rating">
                     <span
-                     onclick="rate({{ movie.id }}, 1)">☆</span><span
-                     onclick="rate({{ movie.id }}, 2)">☆</span><span
-                     onclick="rate({{ movie.id }}, 3)">☆</span><span
+                     onclick="rate({{ movie.id }}, 5)">☆</span><span
                      onclick="rate({{ movie.id }}, 4)">☆</span><span
-                     onclick="rate({{ movie.id }}, 5)">☆</span>
+                     onclick="rate({{ movie.id }}, 3)">☆</span><span
+                     onclick="rate({{ movie.id }}, 2)">☆</span><span
+                     onclick="rate({{ movie.id }}, 1)">☆</span>
                 </div>
             </div></a>
         </td>

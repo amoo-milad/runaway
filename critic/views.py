@@ -98,7 +98,7 @@ def allcritics(request):
 
 
 def movies(request):
-    all_movies_list = Movie.objects.all()
+    all_movies_list = Movie.objects.all().order_by('title')
     context = {
         'all_movies_list': all_movies_list,
     }
@@ -113,7 +113,6 @@ def get_movie(request, movie_id):
 @csrf_exempt
 def rate_movie(request, num_stars, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
-    print ('ok 2')
     movie.update_rate(num_stars)
     movie.save()
     return JsonResponse({'average_rating': movie.average_rating})

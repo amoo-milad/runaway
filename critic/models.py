@@ -45,7 +45,7 @@ class Movie(models.Model):
 
     @property
     def average_rating(self):
-        rate_count = self.rate1 + self.rate2 + self.rate3 + self.rate4
+        rate_count = self.rate1 + self.rate2 + self.rate3 + self.rate4 + self.rate5
         rate_sum = self.rate1 + self.rate2 * 2 + self.rate3 * 3 + \
             self.rate4 * 4 + self.rate5 * 5
         return rate_sum/rate_count
