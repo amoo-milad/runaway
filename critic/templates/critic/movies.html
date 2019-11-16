@@ -1,0 +1,112 @@
+{% extends "critic/base.html" %}
+{% load static %}
+
+{% block title %} Movies {% endblock title %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/all-reviews.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<h3 class="headshot">Movies</h3>
+
+<div class="separator">OF ALL TIMES</div>
+
+<!-- 
+<div class="stars">
+    <div class="rating">
+        <span onclick="f1()">☆</span><span onclick="f2()">☆</span onclick="f3()"><span onclick="f4()">☆</span><span onclick="f5()">☆</span><span>☆</span>
+    </div>
+</div>
+ -->
+<!-- 
+<div class="stars2">
+    <div class="rating2">
+        {% for movie in all_movies_list %}<span>&#9733;</span>{% endfor %}
+    </div>
+</div>
+ -->
+
+<table>
+    <tr>
+        <th>Title | Year</th>
+        <th>Director</th>
+        <th>Rate It!</th>
+    </tr>
+
+
+{% for movie in all_movies_list %}
+    <tr>
+        <td><a href="{% url 'critic:movie_detail' movie.id %}">{{ movie.title }}</a> ({{movie.year}})</td>
+
+        <td><a href="{% url 'critic:movie_detail' movie.id %}">{{ movie.director }}</a>
+
+        <td><a href="#">
+            <div class="stars">
+                <div class="rating">
+                    <span
+                     onclick="rate({{ movie.id }}, 1)">☆</span><span
+                     onclick="rate({{ movie.id }}, 2)">☆</span><span
+                     onclick="rate({{ movie.id }}, 3)">☆</span><span
+                     onclick="rate({{ movie.id }}, 4)">☆</span><span
+                     onclick="rate({{ movie.id }}, 5)">☆</span>
+                </div>
+            </div></a>
+        </td>
+    </tr>
+{% empty %}
+    <h3> no 'all_movie_list' found! </h3>
+{% endfor %}
+
+</table>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+
+
+<script>
+    /*
+    fetch('/movie/{}/rate/{}', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(opts)
+     })
+    .then(function (response) {  
+        console.log('Request success: ', response);
+        return response.json();
+    })  
+    .catch(function (error) {  
+        console.log('Request failure: ', error);  
+    });
+    */
+
+    function rate(movie_id, num_stars) {
+        fetch('/critic/movies/' + movie_id + '/rate/' + num_stars + '/', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: ''
+         })
+        .then(function (response) {
+            console.log('Request success: ', response);
+            return response.json();
+        })
+        .then(function (data) {
+            console.log('Result: ', data);
+        })
+        .catch(function (error) {
+            console.log('Request failure: ', error);  
+        });
+    }
+
+</script>
+
+
+{% endblock content %}

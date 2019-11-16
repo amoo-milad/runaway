@@ -28,4 +28,11 @@ urlpatterns = [
     # ex: /critic/allcritics/
     path('all-critics/', views.allcritics, name='all-critics'),
 
+    # ex: /critic/movies/
+
+    # path('movie/<int:movie_id>/rate/<int:num_stars>/', views.stars, name='stars'),
+    path('movies/', views.movies, name='movies'),
+    path('movies/<int:movie_id>/', views.get_movie, name='movie_detail'),
+    path('movies/<int:movie_id>/rate/<int:num_stars>/', views.rate_movie, name='movie_rate'),
+
 ]

@@ -13,11 +13,48 @@
 
 <div class="separator">OF ALL TIMES</div>
 
+
+<div class="stars">
+    <div class="rating">
+        <span onclick="f1()">☆</span><span onclick="f2()">☆</span onclick="f3()"><span onclick="f4()">☆</span><span onclick="f5()">☆</span><span>☆</span>
+    </div>
+</div>
+
+<script>
+    fetch('/movie/{}/rate/{}', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(opts)
+     })
+    .then(function (response) {  
+        console.log('Request success: ', response);
+        return response.json();
+    })  
+    .catch(function (error) {  
+        console.log('Request failure: ', error);  
+    });
+
+
+</script>
+
+
+
+
+<div class="stars2">
+    <div class="rating2">
+        {% for review in all_review_list %}<span>&#9733;</span>{% endfor %}
+    </div>
+</div>
+
+
 <table>
     <tr>
         <th>Title | Year</th>
         <th>Critic</th>
-        <th>Rate</th>
+        <th>Stars</th>
         <th>Review</th>
     </tr>
 
@@ -29,7 +66,13 @@
 
             <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
 
-            <td><a href="{% url 'critic:review' review.id %}">{{ review.movie_rating }} {% 2+ 100 %}</a></td>
+            <td><a href="{% url 'critic:review' review.id %}">{{ review.stars }}</a>
+                <div class="stars2">
+                    <div class="rating2">
+                        <span>{{ review.star_string }}</span>
+                    </div>
+                </div>
+            </td>
 
             <td>{{ review.review_text|truncatewords:30 }} 
             <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
