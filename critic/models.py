@@ -42,6 +42,7 @@ class Movie(models.Model):
     rate4 = models.IntegerField(default=0)
     rate5 = models.IntegerField(default=0)
     # casts = models.ManyToManyField(Cast)
+    rank = models.IntegerField(default=0)
 
     @property
     def average_rating(self):
@@ -67,6 +68,7 @@ class Movie(models.Model):
             self.rate5 += 1
         # field = f'rate{rate}'
         # setattr(self, field, getattr(self, field) + 1)
+        self.rank = self.average_rating
 
     def __str__(self):
         return self.title

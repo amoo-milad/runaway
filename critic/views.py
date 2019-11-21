@@ -98,7 +98,10 @@ def allcritics(request):
 
 
 def movies(request):
-    all_movies_list = Movie.objects.all().order_by('title')
+    all_movies_list = Movie.objects.all().order_by('rank')
+    print('1- in movies')
+    print('all_movies_list: ')
+    print(all_movies_list)
     context = {
         'all_movies_list': all_movies_list,
     }
@@ -112,6 +115,7 @@ def get_movie(request, movie_id):
 
 @csrf_exempt
 def rate_movie(request, num_stars, movie_id):
+    print('2- in rate_movie')
     movie = get_object_or_404(Movie, pk=movie_id)
     movie.update_rate(num_stars)
     movie.save()
