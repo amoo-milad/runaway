@@ -72,7 +72,7 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('critic:results', args=(question.id,)))
 
 
-def allreviews(request):
+def reviews(request):
     all_review_list = Review.objects.order_by('-pub_date')
     context = {
         'all_review_list': all_review_list,
@@ -86,10 +86,10 @@ def allreviews(request):
     #         'point': review.movie_rating / 20.0
     #     } for review in all_review_list],
     # }
-    return render(request, 'critic/all-reviews.html', context)
+    return render(request, 'critic/reviews.html', context)
 
 
-def allcritics(request):
+def authors(request):
     all_critics_list = Author.objects.all()
     context = {
         'all_critics_list': all_critics_list,
@@ -98,7 +98,7 @@ def allcritics(request):
 
 
 def movies(request):
-    all_movies_list = Movie.objects.all().order_by('rank')
+    all_movies_list = Movie.objects.all().order_by('-rank')
     print('1- in movies')
     print('all_movies_list: ')
     print(all_movies_list)
@@ -119,4 +119,5 @@ def rate_movie(request, num_stars, movie_id):
     movie = get_object_or_404(Movie, pk=movie_id)
     movie.update_rate(num_stars)
     movie.save()
-    return JsonResponse({'average_rating': movie.average_rating})
+    return JsonResponse({'average_rating': movie.average_rating,
+        'rank': movie.rank})

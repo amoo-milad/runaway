@@ -4,14 +4,16 @@
 {% block title %} Movies {% endblock title %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{% static 'critic/all-reviews.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/reviews.css' %}">
 {% endblock style %}
 
 {% block content %}
 
-<h3 class="headshot">Movies</h3>
+<h3 class="headshot">Movies
+<!-- <span id=starry>★★★★★</span> -->
+</h3>
 
-<div class="separator">OF ALL TIMES</div>
+<!-- <div class="separator">OF ALL TIMES</div> -->
 
 <!-- 
 <div class="stars">
@@ -63,6 +65,9 @@
 {% endfor %}
 
 </table>
+
+<div id=starry>★★★ Of All Times ★★★</div>
+
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

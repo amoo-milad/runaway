@@ -9,6 +9,7 @@
 
 .rating {
   color: #000;
+    /*color: gold;*/
   unicode-bidi: bidi-override;
   direction: rtl;
 }

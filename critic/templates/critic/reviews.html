@@ -1,10 +1,12 @@
 {% extends "critic/base.html" %}
 {% load static %}
+{% load critic_extras %}
+
 
 {% block title %} All Reviews {% endblock title %}
 
 {% block style %}
-    <link rel="stylesheet" type="text/css" href="{% static 'critic/all-reviews.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'critic/reviews.css' %}">
 {% endblock style %}
 
 {% block content %}
@@ -13,12 +15,6 @@
 
 <div class="separator">OF ALL TIMES</div>
 
-
-<div class="stars">
-    <div class="rating">
-        <span onclick="f1()">☆</span><span onclick="f2()">☆</span onclick="f3()"><span onclick="f4()">☆</span><span onclick="f5()">☆</span><span>☆</span>
-    </div>
-</div>
 
 <script>
     fetch('/movie/{}/rate/{}', {
@@ -42,14 +38,6 @@
 
 
 
-
-<div class="stars2">
-    <div class="rating2">
-        {% for review in all_review_list %}<span>&#9733;</span>{% endfor %}
-    </div>
-</div>
-
-
 <table>
     <tr>
         <th>Title | Year</th>
@@ -66,10 +54,10 @@
 
             <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
 
-            <td><a href="{% url 'critic:review' review.id %}">{{ review.stars }}</a>
+            <td>
                 <div class="stars2">
                     <div class="rating2">
-                        <span>{{ review.star_string }}</span>
+                        <span>{% for star in review.id|get_stars %}★{% endfor %}</span>
                     </div>
                 </div>
             </td>
