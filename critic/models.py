@@ -55,11 +55,6 @@ class Movie(models.Model):
     def stars(self):
         return int(self.average_rating)
 
-    def ranking(self, average_rating):
-        listi = average_rating
-        return listi 
-
-
     def update_rate(self, rate):
         if rate == 1:
             self.rate1 += 1
@@ -73,8 +68,7 @@ class Movie(models.Model):
             self.rate5 += 1
         # field = f'rate{rate}'
         # setattr(self, field, getattr(self, field) + 1)
-        self.rank = self.average_rating
-        self.ranking(self.average_rating)
+        self.rank = - self.average_rating
 
     def __str__(self):
         return self.title
@@ -114,9 +108,9 @@ class Review(models.Model):
     def stars(self):
         return self.movie_rating / 20.0
 
-    @property
-    def star_string(self):
-        return '★' * (self.movie_rating // 20)
+    # @property
+    # def star_string(self):
+    #     return '★' * (self.movie_rating // 20)
 
     def __str__(self):
         return self.title

@@ -9,26 +9,19 @@
 
 {% block content %}
 
-<h3 class="headshot">Movies
-<!-- <span id=starry>★★★★★</span> -->
+<h3 class="headshot">
+    <div class="eighty">
+        Movies
+    </div>
+    <div class="custom-select">
+      <select>
+        <option value="1">Of All Time</option>
+        <option value="2">Latest</option>
+        <option value="3">Oldest</option>
+        <option value="4">Greatest</option>
+      </select>
+    </div>
 </h3>
-
-<!-- <div class="separator">OF ALL TIMES</div> -->
-
-<!-- 
-<div class="stars">
-    <div class="rating">
-        <span onclick="f1()">☆</span><span onclick="f2()">☆</span onclick="f3()"><span onclick="f4()">☆</span><span onclick="f5()">☆</span><span>☆</span>
-    </div>
-</div>
- -->
-<!-- 
-<div class="stars2">
-    <div class="rating2">
-        {% for movie in all_movies_list %}<span>&#9733;</span>{% endfor %}
-    </div>
-</div>
- -->
 
 <table>
     <tr>
@@ -65,9 +58,6 @@
 {% endfor %}
 
 </table>
-
-<div id=starry>★★★ Of All Times ★★★</div>
-
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

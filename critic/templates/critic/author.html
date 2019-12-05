@@ -9,64 +9,66 @@
 {% endblock style %}
     
 {% block content %}
-<h3 class="headshot">{{ author.name }}</h3>
+<h3 class="headshot">
+    <div class="eighty">
+        {{ author.name }}
+    </div>
+    <div class="custom-select">
+      <select>
+        <option value="1">Of All Time</option>
+        <option value="2">Latest</option>
+        <option value="3">Oldest</option>
+      </select>
+    </div>
 
-<div class="separator">MOVIE REVIEWS</div>
+</h3>
 
 <table>
     <tr>
         <th>Title | Year</th>
         <th>Stars</th>
         <th>Quote</th>
-        <!-- <th>Published as</th> -->
     </tr>
 
-good!
-
-{% if author_review_list %}
-    {% for review in author_review_list %}
-        <tr>
-<!-- 
-            <td>
-                {% for i in review.stars|times %}
-                    ★
-                {% endfor %}
-
-
-                {% for i in "x"|rjust:review.stars %}
-                    *
-                {% endfor %}
-
-                
-                {% with ''|center:review.stars as range %}
-                    {% for _ in range %}
+    {% if author_review_list %}
+        {% for review in author_review_list %}
+            <tr>
+                <!-- 
+                <td>
+                    {% for i in review.stars|times %}
                         ★
                     {% endfor %}
-                {% endwith %}
 
-                
-                {% for i in "1234"|make_list %}
-                    *
-                {% endfor %}
 
-            </td>
- -->
-            <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
+                    {% for i in "x"|rjust:review.stars %}
+                        *
+                    {% endfor %}
 
-            <td>
-                {% for item in review.stars|times %}★{% endfor %}
+                    
+                    {% with ''|center:review.stars as range %}
+                        {% for _ in range %}
+                            ★
+                        {% endfor %}
+                    {% endwith %}
 
-                {% for item in review.movie_rating|star_times %}#{% endfor %}
+                    
+                    {% for i in "1234"|make_list %}
+                        *
+                    {% endfor %}
 
-            </td>
+                </td>
+                 -->
+                <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
 
-            <td>{{ review.review_text|truncatewords:30 }} 
-            <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
-        </tr>
-    {% endfor %}
-{% else %}
-    <h3> no 'author_review_list' found! </h3>
-{% endif %}
+                <td> {% for item in review.stars|times %}★{% endfor %} </td>
+
+                <td>{{ review.review_text|truncatewords:30 }} 
+                <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h3> no 'author_review_list' found! </h3>
+    {% endif %}
 
 </table>
 

@@ -73,32 +73,32 @@ def vote(request, question_id):
 
 
 def reviews(request):
-    all_review_list = Review.objects.order_by('-pub_date')
+    all_reviews_list = Review.objects.order_by('-pub_date')
     context = {
-        'all_review_list': all_review_list,
+        'all_reviews_list': all_reviews_list,
     }
     # context = {
-    #     'all_review_list': [{
+    #     'all_reviews_list': [{
     #         'id': review.id,
     #         'movie': review.movie,
     #         'movie': review.movie,
     #         # ...
     #         'point': review.movie_rating / 20.0
-    #     } for review in all_review_list],
+    #     } for review in all_reviews_list],
     # }
     return render(request, 'critic/reviews.html', context)
 
 
 def authors(request):
-    all_critics_list = Author.objects.all()
+    all_authors_list = Author.objects.all()
     context = {
-        'all_critics_list': all_critics_list,
+        'all_authors_list': all_authors_list,
     }
-    return render(request, 'critic/all-critics.html', context)
+    return render(request, 'critic/authors.html', context)
 
 
 def movies(request):
-    all_movies_list = Movie.objects.all().order_by('-rank')
+    all_movies_list = Movie.objects.all().order_by('rank')
     print('1- in movies')
     print('all_movies_list: ')
     print(all_movies_list)

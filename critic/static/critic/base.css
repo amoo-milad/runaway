@@ -8,7 +8,7 @@ body {
   font-family: sans-serif;
 }
 
-h1, h2, h3, h4, th, .separator {
+h1, h2, h3, h4, th {
   font-family: "Poppins", sans-serif;
 }
 
@@ -31,34 +31,19 @@ a:hover {
 }
 
 .headshot {
+  border-radius: 0.1em;
   background-color: #205b6e;
   color: #fff;
   padding: 12px;
   min-width: 200px;
   line-height: 29px;
   display: flex;
-  /*margin-right: 270px;*/
 }
 
-#starry {
-  padding: 3px;
-  margin-top: 10px;
-
-  /*border: 1px dashed red;*/
-  /*margin: 0px;*/
-  /*padding: 0px;*/
-  align-items: center;
-  background: #333;
-  /*background-color: #205b6e;*/
-  
-  /*background: #ddd;*/
-  color: gold;
-  display: flex;
-  /*font-size: 150px;*/
-  /*height: 100vh;*/
-  justify-content: center;
-  /*float: right;*/
+.eighty {
+  width: 80%;
 }
+
 
 #now-showing {
   /*background-color: #205b6e;*/
@@ -66,6 +51,45 @@ a:hover {
   margin: 0px 20px;
   width: 200px;
 }
+
+
+/************* Select Button **************/
+  .custom-select {
+  /*--radius: 0.2em;*/
+  --baseFg: dimgray;
+  --accentFg: #006fc2;
+  --accentBg: #bae1ff;
+}
+
+select {
+  font: 400 12px/1.3 sans-serif;
+  -webkit-appearance: none;
+  appearance: none;
+  /*color: var(--baseFg);*/
+  color: #fff;
+  border: 1px solid var(--baseFg);
+  line-height: 1;
+  outline: 0;
+  padding: 0.65em 2.5em 0.55em 0.75em;
+  border-radius: var(--radius);
+  background-color: var(--baseBg);
+  background-image: linear-gradient(var(--baseFg), var(--baseFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentBg) 50%),
+    linear-gradient(var(--accentBg) 42%, var(--accentFg) 42%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 1px 100%, 20px 22px, 20px 22px, 20px 100%;
+  background-position: right 20px center, right bottom, right bottom, right bottom;   
+}
+
+select:hover {
+  background-image: linear-gradient(var(--accentFg), var(--accentFg)),
+    linear-gradient(-135deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(-225deg, transparent 50%, var(--accentFg) 50%),
+    linear-gradient(var(--accentFg) 42%, var(--accentBg) 42%);
+}
+/********** End of Select Button ***********/
+
 
 
 /************** TABLE *****************/
@@ -196,37 +220,16 @@ aside h4 {
 }
 
 #sidebar {
+  border-radius: 0.1em;
   float: right;
   height: 300px;
   margin-top: 16px;
   margin-left: 10px;
   color: #1f7a99;
   bottom: 100px;
-  border: 4px dashed #fff;
+  /*border: 4px dashed #fff;*/
 }
 /************ End of ASIDE **********/
-
-
-
-/************ SEPARATOR **********/
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
-.separator::before, .separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #000;
-}
-.separator::before {
-    margin-right: .25em;
-    padding-right: -200px;
-}
-.separator::after {
-    margin-left: .25em;
-}
-/********* End of SEPARATOR *******/
 
 
 

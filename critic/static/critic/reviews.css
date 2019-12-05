@@ -1,15 +1,11 @@
 
 .stars {
-  /*background-color: yellow;*/
-  /*border: 1px dashed blue;*/
-  /*float: left;*/
   display: inline-block;
   white-space: nowrap;
 }
 
 .rating {
   color: #000;
-    /*color: gold;*/
   unicode-bidi: bidi-override;
   direction: rtl;
 }
@@ -23,38 +19,6 @@
    content: "\2605";
    position: absolute;
 }
-
-
-.rating2 span:last-child {
-  /*background-color: yellow;*/
-  /*opacity: 0.3;*/
-   /*content: "\2605";*/
-   /*position: absolute;*/
-}
-
-
-
-/*
-.stars2 {
-  border: 1px dashed blue;
-  display: inline-block;
-  white-space: nowrap;
-}
-.rating2 {
-  unicode-bidi: bidi-override;
-  direction: rtl;
-}
-.rating2 > span {
-  display: inline-block;
-  position: relative;
-  width: 1.1em;
-}
-.rating2 > span:hover:before,
-.rating2 > span:hover ~ span:before {
-   content: "\2605";
-   position: absolute;
-}
-*/
 
 /************** MEDIA *************/
 @media screen and (max-width: 780px) { /*lightblue*/

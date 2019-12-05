@@ -11,9 +11,18 @@
 
 {% block content %}
 
-<h3 class="headshot">Reviews</h3>
-
-<div class="separator">OF ALL TIMES</div>
+<h3 class="headshot">
+    <div class="eighty">
+        Reviews
+    </div>
+    <div class="custom-select">
+      <select>
+        <option value="1">Of All Time</option>
+        <option value="2">Latest</option>
+        <option value="3">Oldest</option>
+      </select>
+    </div>
+</h3>
 
 
 <script>
@@ -43,37 +52,36 @@
         <th>Title | Year</th>
         <th>Critic</th>
         <th>Stars</th>
-        <th>Review</th>
+        <th>Quote</th>
     </tr>
 
 
-{% if all_review_list %}
-    {% for review in all_review_list %}
-        <tr>
-            <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
+    {% if all_reviews_list %}
+        {% for review in all_reviews_list %}
+            <tr>
+                <td><a href="{% url 'critic:review' review.id %}">{{ review.movie.title }}</a> ({{review.movie.year}})</td>
 
-            <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
+                <td><a href="{% url 'critic:author' review.author.id %}">{{ review.author }}</a></td>
 
-            <td>
-                <div class="stars2">
-                    <div class="rating2">
-                        <span>{% for star in review.id|get_stars %}★{% endfor %}</span>
+                <td>
+                    <div class="stars">
+                        <div>
+                            <span>{% for star in review.stars|times %}★{% endfor %}</span>
+                        </div>
                     </div>
-                </div>
-            </td>
+                </td>
 
-            <td>{{ review.review_text|truncatewords:30 }} 
-            <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
+                <td>{{ review.review_text|truncatewords:30 }} 
+                <br><a href="{% url 'critic:review' review.id %}">Read More</a> | Posted {{review.pub_date}}</td>
 
-        </tr>
-    {% endfor %}
-{% else %}
-    <h3> no 'all_review_list' found! </h3>
-{% endif %}
-
+            </tr>
+        {% endfor %}
+    {% else %}
+        <h3> no 'all_reviews_list' found! </h3>
+    {% endif %}
+    
 </table>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
 
 {% endblock content %}
