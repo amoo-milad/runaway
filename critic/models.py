@@ -114,7 +114,7 @@ class Review(models.Model):
 
     @property
     def stars(self):
-        if not movie_rating:
+        if not self.movie_rating:
             return 0
         return self.movie_rating / 20.0
 
