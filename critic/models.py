@@ -35,7 +35,12 @@ class Movie(models.Model):
     screen_writer = models.CharField(max_length=100)
     genres = models.ManyToManyField(Genre)
     length = models.DurationField()
-    cover_image = models.ImageField(upload_to='movies/cover/', null=True)
+    cover_image = models.ImageField(
+        upload_to='movies/cover/',
+        null=True,
+        blank=True,
+        default='movies/cover/default-cover.png'
+    )
     rate1 = models.IntegerField(default=0)
     rate2 = models.IntegerField(default=0)
     rate3 = models.IntegerField(default=0)
@@ -47,9 +52,12 @@ class Movie(models.Model):
     @property
     def average_rating(self):
         rate_count = self.rate1 + self.rate2 + self.rate3 + self.rate4 + self.rate5
+        if rate_count == 0:
+            return None
         rate_sum = self.rate1 + self.rate2 * 2 + self.rate3 * 3 + \
             self.rate4 * 4 + self.rate5 * 5
         return rate_sum/rate_count
+        # this causes ZeroDivisionError
 
     @property
     def stars(self):
